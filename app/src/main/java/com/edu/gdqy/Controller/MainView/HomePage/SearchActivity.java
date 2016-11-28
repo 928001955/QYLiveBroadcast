@@ -2,12 +2,17 @@ package com.edu.gdqy.Controller.MainView.HomePage;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.Animation;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.edu.gdqy.Controller.R;
+import com.edu.gdqy.Tool.VedioGridAdapter;
+import com.edu.gdqy.bean.VedioBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,17 +25,42 @@ import butterknife.OnClick;
 
 public class SearchActivity extends AppCompatActivity {
 
-    @BindView(R.id.AC_Search_Text)
-    EditText mSearchText;
+    @BindView(R.id.search_InputKey)
+    EditText mInputKey;
+    @BindView(R.id.search_SearchBtn)
+    ImageView mSearchBtn;
+    @BindView(R.id.search_Result)
+    GridView mResult;
+    @BindView(android.R.id.empty)
+    ImageView empty;
+
+    private List<VedioBean> vedioBeanList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        getSupportActionBar().hide();
         ButterKnife.bind(this);
+        init();
     }
 
-    @OnClick(R.id.AC_Search_Searchbtn)
-    public void onClick() {
+    private void init() {
+        vedioBeanList = new ArrayList<>();
+
+        mResult.setEmptyView(empty);
+        VedioGridAdapter adapter = new VedioGridAdapter(this,this,vedioBeanList);
+        mResult.setAdapter(adapter);
+    }
+
+    @OnClick({R.id.search_Back, R.id.search_SearchBtn})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.search_Back:
+                this.finish();
+                break;
+            case R.id.search_SearchBtn:
+                break;
+        }
     }
 }
