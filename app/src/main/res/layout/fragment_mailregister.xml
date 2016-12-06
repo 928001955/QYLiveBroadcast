@@ -9,49 +9,63 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="3dp"
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/FM_Mailregister_mailInput"
+            android:id="@+id/mailregister_mailInput"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:drawablePadding="10dp"
             android:background="@drawable/shape_edittext"
-            android:hint="请输入您的邮箱" />
+            android:drawablePadding="10dp"
+            android:inputType="textEmailAddress"
+            android:hint="@string/input_mail" />
 
         <Button
-            android:id="@+id/FM_Mailregister_Captcha"
+            android:id="@+id/mailregister_captcha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-90dp"
-            android:background="@drawable/shape_button_usable"
-            android:text="验证码" />
+            android:background="@drawable/shape_button_blue"
+            android:text="@string/identifying_code" />
     </LinearLayout>
 
     <EditText
-        android:id="@+id/FM_Mailregister_CodeInput"
+        android:id="@+id/mailregister_codeInput"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:drawablePadding="10dp"
+        android:layout_margin="3dp"
         android:background="@drawable/shape_edittext"
-        android:hint="请输入验证码" />
-
-        <EditText
-            android:id="@+id/FM_Mailregister_passwordInput"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:drawablePadding="10dp"
-            android:background="@drawable/shape_edittext"
-            android:hint="请输入您的密码"
-            android:inputType="textPassword" />
+        android:drawablePadding="10dp"
+        android:hint="@string/input_code" />
 
     <EditText
-        android:id="@+id/FM_Mailregister_Nickname"
+        android:id="@+id/mailregister_passwordInput"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:drawablePadding="10dp"
+        android:layout_margin="3dp"
         android:background="@drawable/shape_edittext"
-        android:hint="请输入您的昵称" />
+        android:drawablePadding="10dp"
+        android:hint="@string/input_password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/mailregister_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="3dp"
+        android:background="@drawable/shape_edittext"
+        android:drawablePadding="10dp"
+        android:hint="@string/input_nickname" />
+
+    <Button
+        android:id="@+id/mailregister_registerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:background="@drawable/shape_button_blue"
+        android:text="@string/register_immediately"
+        android:textSize="20sp" />
 
 
 </LinearLayout>

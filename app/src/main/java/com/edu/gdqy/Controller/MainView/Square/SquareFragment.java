@@ -24,13 +24,13 @@ import butterknife.ButterKnife;
 
 public class SquareFragment extends Fragment {
 
-    @BindView(R.id.FM_Square_Tablayout)
+    @BindView(R.id.square_tablayout)
     TabLayout mTablayout;
-    @BindView(R.id.FM_Square_Viewpager)
+    @BindView(R.id.square_viewpager)
     ViewPager mViewpager;
 
     private List<Fragment> fragments;
-    private List<String> titles;
+    private String[] titles;
 
     @Nullable
     @Override
@@ -52,16 +52,12 @@ public class SquareFragment extends Fragment {
         fragments.add(lectureFragment);
         fragments.add(exchangeFragment);
 
-        titles = new ArrayList<>();
-        titles.add("课程教学");
-        titles.add("课后辅导");
-        titles.add("专题讲座");
-        titles.add("学生交流");
+        titles = getResources().getStringArray(R.array.live_category);
         mTablayout.setTabMode(TabLayout.MODE_FIXED);//设置tab模式，当前为系统默认模式
-        mTablayout.addTab(mTablayout.newTab().setText(titles.get(0)));//添加tab选项卡
-        mTablayout.addTab(mTablayout.newTab().setText(titles.get(1)));
-        mTablayout.addTab(mTablayout.newTab().setText(titles.get(2)));
-        mTablayout.addTab(mTablayout.newTab().setText(titles.get(3)));
+        mTablayout.addTab(mTablayout.newTab().setText(titles[0]));//添加tab选项卡
+        mTablayout.addTab(mTablayout.newTab().setText(titles[1]));
+        mTablayout.addTab(mTablayout.newTab().setText(titles[2]));
+        mTablayout.addTab(mTablayout.newTab().setText(titles[3]));
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager(),fragments,titles);
         mViewpager.setAdapter(adapter);

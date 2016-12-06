@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="精彩预告"/>
+        android:text="@string/wonderful_trailer"/>
 
     <ListView
         android:id="@+id/LY_herald_list"

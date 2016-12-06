@@ -6,6 +6,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -27,13 +29,13 @@ import butterknife.OnClick;
  */
 
 public class LoginWayFragment extends Fragment {
-    @BindView(R.id.FM_loginWay_playAudio)
+    @BindView(R.id.loginWay_playAudio)
     SurfaceView mPlayAudio;
-    @BindView(R.id.FM_loginWay_wayQQ)
+    @BindView(R.id.loginWay_wayQQ)
     ImageView mWayQQ;
-    @BindView(R.id.FM_loginWay_wayWechat)
+    @BindView(R.id.loginWay_wayWechat)
     ImageView mWechat;
-    @BindView(R.id.FM_loginWay_wayQinghao)
+    @BindView(R.id.loginWay_wayQinghao)
     ImageView mQinghao;
 
     private MediaPlayer mediaPlayer;
@@ -53,18 +55,19 @@ public class LoginWayFragment extends Fragment {
         mPlayAudio.getHolder().addCallback(new SurfaceViewLis());//添加回调函数
     }
 
-    @OnClick({R.id.FM_loginWay_wayQQ, R.id.FM_loginWay_wayWechat, R.id.FM_loginWay_wayQinghao})
+    @OnClick({R.id.loginWay_wayQQ, R.id.loginWay_wayWechat, R.id.loginWay_wayQinghao})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.FM_loginWay_wayQQ:
+            case R.id.loginWay_wayQQ:
                 break;
-            case R.id.FM_loginWay_wayWechat:
+            case R.id.loginWay_wayWechat:
                 break;
-            case R.id.FM_loginWay_wayQinghao:
+            case R.id.loginWay_wayQinghao:
                 LoginFragment loginFragment = new LoginFragment();
-                getActivity().getSupportFragmentManager().
-                        beginTransaction().replace(R.id.AC_Loginregister_Framelayout
-                        ,loginFragment).commit();
+                FragmentTransaction fm = getActivity().getSupportFragmentManager().beginTransaction();
+                fm.replace(R.id.loginregister_frame,loginFragment);
+                fm.addToBackStack(null);
+                fm.commit();
                 break;
         }
     }

@@ -1,8 +1,11 @@
 package com.edu.gdqy.Controller.MainView.HomePage;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Point;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -23,6 +27,8 @@ import android.widget.Toast;
 import com.edu.gdqy.Controller.AnchorAudienceView.Live.LiveActivity;
 import com.edu.gdqy.Controller.AnchorAudienceView.VideoOnDemandActivity;
 import com.edu.gdqy.Controller.R;
+import com.edu.gdqy.Tool.PublicVariable;
+import com.edu.gdqy.Tool.Publicmethod;
 import com.edu.gdqy.Tool.VedioGridAdapter;
 import com.edu.gdqy.bean.VedioBean;
 import com.jude.rollviewpager.RollPagerView;
@@ -53,11 +59,15 @@ public class HomePageFragment extends Fragment {
 
     private List<VedioBean> hotBeans;
     private List<VedioBean> programmeBeans;
+    private BaseAdapter hotAdapter, programmingAdapter;
 
     private int popupWidth, popupHeight;
     private int xOff;
     private PopupWindow popupWindow;
-    private boolean isShowPopup = false;
+    private BroadcastReceiver receiver;
+    private boolean isShow=false;         //是否popupwindow显示
+    private boolean first = true; //是不是第一次进入该页面
+
 
     @Nullable
     @Override
@@ -66,56 +76,60 @@ public class HomePageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_homepage, null);
         ButterKnife.bind(this, view);
 
-        WindowManager manager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-        Display defaultDisplay = manager.getDefaultDisplay();
-        Point size = new Point();
-        defaultDisplay.getSize(size);
-        popupWidth = size.x * 3 / 4;
-        popupHeight = size.y / 2;
-        xOff = size.x - popupWidth;
+        int screemWidth = Publicmethod.getScreenHeightWidth(1, getContext());
+        int screemHeight = Publicmethod.getScreenHeightWidth(2, getContext());
+        popupWidth = screemWidth * 3 / 4;
+        popupHeight = screemHeight / 2;
+        xOff = screemWidth - popupWidth;
 
         init();
+        registerBroadrecevicer();
         return view;
     }
 
     private void init() {
-        //设置播放时间间隔
+        //RollPagerView初始化
         mCarousel.setPlayDelay(2000);
-        //设置透明度
         mCarousel.setAnimationDurtion(500);
-        //设置适配器
         mCarousel.setAdapter(new CarouselAdapter());
 
         initPopupWindow();
 
         String[] url = new String[]{"http://img.mukewang.com/53bf89100001684e06000338-240-135.jpg"
-                ,"http://img.mukewang.com/57075af80001574b06000338-240-135.jpg"
-                ,"http://img.mukewang.com/541698a40001d1c306000338-240-135.jpg"
-                ,"http://img.mukewang.com/57075b1a000178ad06000338-240-135.jpg"};
-        String[] title= new String[]{"我是帅B","超级大帅逼","我是老腊肉","熏得乌漆麻黑的"};
+                , "http://img.mukewang.com/57075af80001574b06000338-240-135.jpg"
+                , "http://img.mukewang.com/541698a40001d1c306000338-240-135.jpg"
+                , "http://img.mukewang.com/57075b1a000178ad06000338-240-135.jpg"};
+        String[] title = new String[]{"安卓常用组件", "ListView的使用", "安卓常犯错误", "安卓总结"};
         hotBeans = new ArrayList<>();
-        for (int i = 0; i < url.length ; i++) {
+        for (int i = 0; i < url.length; i++) {
             VedioBean bean = new VedioBean();
             bean.setImageUrl(url[i]);
             bean.setVedioName(title[i]);
             hotBeans.add(bean);
         }
-        VedioGridAdapter adapter1 = new VedioGridAdapter(getActivity(),getContext(), hotBeans);
-        mHotGrid.setAdapter(adapter1);
+        hotAdapter = new VedioGridAdapter(getActivity(), getContext(), hotBeans);
+        mHotGrid.setAdapter(hotAdapter);
 
         programmeBeans = new ArrayList<>();
         String[] url1 = new String[]{"http://img.mukewang.com/545c862c0001e13e06000338-240-135.jpg"
-                ,"http://img.mukewang.com/55d6ca740001f2ad06000338-240-135.jpg"
-                ,"http://img.mukewang.com/5707598e0001ec7c06000338-240-135.jpg"
-                ,"http://img.mukewang.com/55666c0a0001d6b506000338-240-135.jpg"};
-        for (int i = 0; i < url1.length ; i++) {
+                , "http://img.mukewang.com/55d6ca740001f2ad06000338-240-135.jpg"
+                , "http://img.mukewang.com/5707598e0001ec7c06000338-240-135.jpg"
+                , "http://img.mukewang.com/55666c0a0001d6b506000338-240-135.jpg"};
+        for (int i = 0; i < url1.length; i++) {
             VedioBean bean = new VedioBean();
             bean.setImageUrl(url1[i]);
             bean.setVedioName(title[i]);
             programmeBeans.add(bean);
         }
-        VedioGridAdapter adapter2 = new VedioGridAdapter(getActivity(),getContext(), programmeBeans);
-        mProgrammingGrid.setAdapter(adapter2);
+        programmingAdapter = new VedioGridAdapter(getActivity(), getContext(), programmeBeans);
+        mProgrammingGrid.setAdapter(programmingAdapter);
+    }
+
+    private void registerBroadrecevicer() {
+        receiver = new IntenterBoradCastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        getActivity().registerReceiver(receiver, filter);
     }
 
     @OnItemClick({R.id.homepage_hotGrid, R.id.homepage_programming})
@@ -123,12 +137,12 @@ public class HomePageFragment extends Fragment {
         Intent intent;
         switch (parent.getId()) {
             case R.id.homepage_hotGrid:
-                intent= new Intent(getActivity(), VideoOnDemandActivity.class);
+                intent = new Intent(getActivity(), VideoOnDemandActivity.class);
                 startActivity(intent);
                 break;
             case R.id.homepage_programming:
                 intent = new Intent(getActivity(), LiveActivity.class);
-                intent.putExtra("live","watch");
+                intent.putExtra("live", PublicVariable.WATCH);
                 startActivity(intent);
                 break;
         }
@@ -140,12 +154,12 @@ public class HomePageFragment extends Fragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.homePage_herald:
-                if (!isShowPopup) {
+                if (!isShow) {
                     popupWindow.showAsDropDown(mLayout, xOff, 0);
-                    isShowPopup = true;
-                } else {
+                    isShow=true;
+                }else {
                     popupWindow.dismiss();
-                    isShowPopup = false;
+                    isShow=false;
                 }
                 break;
             case R.id.homePage_QRCode:
@@ -163,16 +177,10 @@ public class HomePageFragment extends Fragment {
         popupWindow = new PopupWindow(popupView, popupWidth, popupHeight);
         popupWindow.setTouchable(true);
         popupWindow.setOutsideTouchable(true);
-        popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.img1));
+        popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.announced_bg));
         popupWindow.setAnimationStyle(R.style.mune_herald);
-        ListView heraldList = (ListView) popupView.findViewById(R.id.LY_herald_list);
-        heraldList.setAdapter(new HeraldListAdapter(getContext(), null, null, null));
-        heraldList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
+        ListView announceList = (ListView) popupView.findViewById(R.id.LY_herald_list);
+        announceList.setAdapter(new AnnounceListAdapter(getContext(), null, null, null));
     }
 
     //扫描二维码返回
@@ -186,4 +194,26 @@ public class HomePageFragment extends Fragment {
         }
     }
 
+    //从无网变成有网监听，刷新主页
+    private class IntenterBoradCastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (Publicmethod.checkNetwork(context)) {
+                if (first) {
+                    first = false;
+                    return;
+                }
+                hotAdapter.notifyDataSetChanged();
+                programmingAdapter.notifyDataSetChanged();
+                Toast.makeText(context, "网络已连接，帮您更新了首页", Toast.LENGTH_SHORT).show();
+            }
+            ;
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().unregisterReceiver(receiver);
+    }
 }

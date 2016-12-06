@@ -28,9 +28,9 @@ import butterknife.ButterKnife;
  */
 
 public class TimeSelectDialog extends DialogFragment {
-    @BindView(R.id.DL_TimeSelect_Data)
+    @BindView(R.id.timeSelect_data)
     DatePicker mSelectData;
-    @BindView(R.id.DL_TimeSelect_Time)
+    @BindView(R.id.timeSelect_time)
     TimePicker mSelectTime;
 
     private int month,currentMonth;

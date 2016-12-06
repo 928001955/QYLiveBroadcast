@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <GridView
-        android:id="@+id/FM_ClassifyTeach_GridView"
+        android:id="@+id/classifyTeach_gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:verticalSpacing="10dp"

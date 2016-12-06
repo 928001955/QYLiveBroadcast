@@ -3,10 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <GridView
-        android:id="@+id/FM_ClassifyCoach_GridView"
+        android:id="@+id/classifyCoach_gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:verticalSpacing="10dp"
         android:numColumns="2"/>
 
 </LinearLayout>

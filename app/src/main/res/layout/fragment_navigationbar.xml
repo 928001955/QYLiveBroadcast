@@ -5,28 +5,28 @@
     android:orientation="horizontal">
 
     <com.edu.gdqy.Tool.ImageTextGroupView
-        android:id="@+id/FM_BottonNavigation_HomePage"
+        android:id="@+id/bottonNavigation_homePage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1" />
 
     <com.edu.gdqy.Tool.ImageTextGroupView
-        android:id="@+id/FM_BottonNavigation_Square"
+        android:id="@+id/bottonNavigation_square"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1" />
 
     <com.edu.gdqy.Tool.ImageTextGroupView
-        android:id="@+id/FM_BottonNavigation_Subscriber"
+        android:id="@+id/bottonNavigation_subscriber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1" />
 
     <com.edu.gdqy.Tool.ImageTextGroupView
-        android:id="@+id/FM_BottonNavigation_My"
+        android:id="@+id/bottonNavigation_mySelf"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"

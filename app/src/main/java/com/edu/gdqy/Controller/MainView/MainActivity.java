@@ -1,21 +1,24 @@
 package com.edu.gdqy.Controller.MainView;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.edu.gdqy.Controller.AnchorAudienceView.Live.LiveActivity;
 import com.edu.gdqy.Controller.MainView.BottomNavigationBar.BottomNavigationFragment;
 import com.edu.gdqy.Controller.MainView.HomePage.HomePageFragment;
 import com.edu.gdqy.Controller.MainView.My.MyFragment;
+import com.edu.gdqy.Controller.MainView.My.WriteTopicDiglog;
 import com.edu.gdqy.Controller.MainView.Square.SquareFragment;
 import com.edu.gdqy.Controller.MainView.Subscriber.SubscriberFragment;
 import com.edu.gdqy.Controller.R;
 import com.edu.gdqy.Tool.PublicVariable;
 
 public class MainActivity extends FragmentActivity implements
-        BottomNavigationFragment.NavigationListener {
+        BottomNavigationFragment.NavigationListener,WriteTopicDiglog.WritedLisener {
     private Fragment homeFragment, squareFragment, subscriberFragment, myFragment;
 
 
@@ -33,10 +36,10 @@ public class MainActivity extends FragmentActivity implements
         myFragment = new MyFragment();
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.AC_Main_framentLayout, homeFragment);
-        fragmentTransaction.add(R.id.AC_Main_framentLayout, squareFragment).hide(squareFragment);
-        fragmentTransaction.add(R.id.AC_Main_framentLayout, subscriberFragment).hide(subscriberFragment);
-        fragmentTransaction.add(R.id.AC_Main_framentLayout, myFragment).hide(myFragment);
+        fragmentTransaction.add(R.id.main_frame, homeFragment);
+        fragmentTransaction.add(R.id.main_frame, squareFragment).hide(squareFragment);
+        fragmentTransaction.add(R.id.main_frame, subscriberFragment).hide(subscriberFragment);
+        fragmentTransaction.add(R.id.main_frame, myFragment).hide(myFragment);
         fragmentTransaction.commit();
     }
 
@@ -69,4 +72,11 @@ public class MainActivity extends FragmentActivity implements
         fragmentTransaction.commit();
     }
 
+    @Override
+    public void gotoLive(String token) {
+        Intent intent = new Intent(this, LiveActivity.class);
+        intent.putExtra("live",PublicVariable.LIVE);
+        intent.putExtra("secretKey",token);
+        startActivity(intent);
+    }
 }

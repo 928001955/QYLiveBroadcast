@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <FrameLayout
-            android:id="@+id/AC_Main_framentLayout"
+            android:id="@+id/main_frame"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="15" />
@@ -23,7 +23,7 @@
             android:background="@android:color/darker_gray" />
 
         <fragment
-            android:id="@+id/AC_Main_Navigation"
+            android:id="@+id/main_navigation"
             android:name="com.edu.gdqy.Controller.MainView.BottomNavigationBar.BottomNavigationFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"

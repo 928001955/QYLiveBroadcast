@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 
 public class SetListAdapter extends BaseAdapter {
     private List<String> names;
-    private int[] icon=new int[6];
+    private int[] icon=new int[7];
     private LayoutInflater inflater;
 
     public SetListAdapter(Context context) {
@@ -34,6 +34,7 @@ public class SetListAdapter extends BaseAdapter {
         icon[3]=R.drawable.mute;
         icon[4]=R.drawable.share;
         icon[5]=R.drawable.aboutsoft;
+        icon[6]=R.drawable.exit;
 
         names = new ArrayList();
         names.add("资料修改");
@@ -42,6 +43,7 @@ public class SetListAdapter extends BaseAdapter {
         names.add("不接收消息提示");
         names.add("分享软件");
         names.add("关于本软件");
+        names.add("退出登录");
         inflater = LayoutInflater.from(context);
     }
 
@@ -64,9 +66,9 @@ public class SetListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView==null){
-            convertView= inflater.inflate(R.layout.item_moreset_setlist, null);
+            convertView= inflater.inflate(R.layout.item_moreset, null);
             holder = new ViewHolder(convertView);
-            convertView.setTag(convertView);
+            convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
         }

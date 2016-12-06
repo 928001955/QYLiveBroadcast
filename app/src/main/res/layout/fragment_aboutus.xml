@@ -9,42 +9,33 @@
         android:layout_height="60dp"
         android:background="@android:color/holo_blue_light">
 
-        <TextView
-            android:id="@+id/AC_Aboutus_Back"
+        <ImageView
+            android:id="@+id/aboutus_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:padding="10dp"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:background="@drawable/selector_groupview"
-            android:text="Back"
-            />
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="关于直播"
-            android:textSize="30sp" />
+            android:textColor="@android:color/white"
+            android:text="@string/about_live"
+            android:textSize="20sp" />
 
     </RelativeLayout>
-
-
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="30dp"
-        android:text="        轻院TV以课程直播为主，涵盖了课后辅导、专题讲座、娱乐等多种直播内容。每天，都有成千上万的观众与主播在斗鱼分享欢笑，获得属于自己独一份的知识和快乐。\n
-        轻院TV欢迎每一名用户：无论是主播还是观众，我们都力图为您提供最好的直播与观看环境；并希望与您携手，共同进步，绘制更加美好的未来。\n
-        欢乐直播，尽在轻院TV！"/>
-
+        android:text="@string/about_live_content" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="30dp"
         android:gravity="right"
-        android:text="软件2组"/>
+        android:padding="30dp"
+        android:text="@string/team_name" />
 </LinearLayout>

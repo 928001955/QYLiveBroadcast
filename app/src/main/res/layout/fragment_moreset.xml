@@ -7,32 +7,28 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:background="@android:color/holo_blue_light">
 
-        <TextView
-            android:id="@+id/AC_moreset_Back"
+        <ImageView
+            android:id="@+id/moreset_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:padding="10dp"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:background="@drawable/selector_groupview"
-            android:text="Back"
-            />
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="更多设置"
-            android:textSize="30sp" />
+            android:text="@string/more_settings"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/FM_Moreset_SetList"
+        android:id="@+id/moreset_setList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"

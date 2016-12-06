@@ -3,17 +3,12 @@ package com.edu.gdqy.Controller.MainView.Square;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.edu.gdqy.Controller.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,10 +19,10 @@ import butterknife.ButterKnife;
  */
 
 public class ClassifyCoachFragment extends Fragment {
-    @BindView(R.id.FM_ClassifyCoach_GridView)
+    @BindView(R.id.classifyCoach_gridView)
     GridView mGridView;
-    private List<String> teachList;
-
+    private String[] teachList;
+    private int image[];
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,40 +34,14 @@ public class ClassifyCoachFragment extends Fragment {
 
 
     private void init() {
-        teachList = new ArrayList<>();
-        teachList.add("练习");
-        teachList.add("回顾");
-        teachList.add("测试");
-        teachList.add("巩固");
-        teachList.add("问答");
-        teachList.add("扩展");
-        ClassifyGirdAdapter adapter = new ClassifyGirdAdapter(teachList, getContext());
+        teachList = getResources().getStringArray(R.array.live_category2);
+        image = new int[4];
+        image[0] = R.drawable.coach1;
+        image[1] = R.drawable.coach2;
+        image[2] = R.drawable.coach3;
+        image[3] = R.drawable.coach4;
+        ClassifyListAdapter adapter = new ClassifyListAdapter(image,teachList,getContext());
         mGridView.setAdapter(adapter);
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                    case 1:
-                        break;
-                    case 2:
-                        Log.w("TAG", "2");
-                        break;
-                    case 3:
-                        Log.w("TAG", "3");
-                        break;
-                    case 4:
-                        Log.w("TAG", "4");
-                        break;
-                    case 5:
-                        Log.w("TAG", "5");
-                        break;
-                    case 6:
-                        Log.w("TAG", "6");
-                        break;
-                }
-            }
-        });
     }
 
 

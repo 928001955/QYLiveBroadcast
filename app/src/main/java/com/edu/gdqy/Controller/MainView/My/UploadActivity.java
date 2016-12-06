@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edu.gdqy.Controller.R;
 import com.edu.gdqy.Tool.ImageTextGroupView;
@@ -27,13 +28,13 @@ import butterknife.OnClick;
  */
 
 public class UploadActivity extends AppCompatActivity {
-    @BindView(R.id.AC_Upload_ShootUpload)
+    @BindView(R.id.upload_shootUpload)
     ImageTextGroupView mShootUpload;
-    @BindView(R.id.AC_Upload_LocalUpload)
+    @BindView(R.id.upload_localUpload)
     ImageTextGroupView mLocalUpload;
     @BindView(R.id.AC_Upload_Preview)
     ImageView mPreview;
-    @BindView(R.id.AC_Upload_VedioName)
+    @BindView(R.id.upload_vedioName)
     TextView mVedioName;
 
     private static final int GETVEDIO_CODE = 520;
@@ -59,21 +60,21 @@ public class UploadActivity extends AppCompatActivity {
         mLocalUpload.setTextName("本地上传");
     }
 
-    @OnClick({R.id.AC_Upload_Back, R.id.AC_Upload_ShootUpload, R.id.AC_Upload_LocalUpload, R.id.AC_Upload_UploadBtn})
+    @OnClick({R.id.upload_back, R.id.upload_shootUpload, R.id.upload_localUpload, R.id.upload_uploadBtn})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.AC_Upload_Back:
+            case R.id.upload_back:
                 this.finish();
                 break;
-            case R.id.AC_Upload_ShootUpload:
+            case R.id.upload_shootUpload:
                 break;
-            case R.id.AC_Upload_LocalUpload:
+            case R.id.upload_localUpload:
                 Intent intent = new Intent();
                 intent.setType("video/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(intent, GETVEDIO_CODE);
                 break;
-            case R.id.AC_Upload_UploadBtn:
+            case R.id.upload_uploadBtn:
                 break;
         }
     }
@@ -83,15 +84,21 @@ public class UploadActivity extends AppCompatActivity {
         if (requestCode == GETVEDIO_CODE) {
             if (resultCode == RESULT_OK) {
                 Uri uri = data.getData();
-                Cursor cursor = getContentResolver().query(uri, null, null,null, null);
-                cursor.moveToFirst();
-                String vedioName = cursor.getString(2); // 图片文件名称
-                String vedioPath = cursor.getString(1); // 图片文件路径
-                Log.w("TAG",vedioPath+"/"+vedioName);
+                if (uri!=null) {
+                    Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+                    cursor.moveToFirst();
+                    String vedioName = cursor.getString(2); // 图片文件名称
 
-                MediaMetadataRetriever media = new MediaMetadataRetriever();
-                media.setDataSource(vedioPath+"/"+vedioName);
-                Bitmap frameAtTime = media.getFrameAtTime();
+                    MediaMetadataRetriever media = new MediaMetadataRetriever();
+                    media.setDataSource(this, uri);
+                    Bitmap frameAtTime = media.getFrameAtTime();
+                    if (frameAtTime != null) {
+                        mPreview.setImageBitmap(frameAtTime);
+                        mVedioName.setText(vedioName);
+                    }
+                }else {
+                    Toast.makeText(this,"url=null",Toast.LENGTH_SHORT).show();
+                }
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

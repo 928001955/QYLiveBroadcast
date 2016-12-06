@@ -28,10 +28,8 @@ public class AboutUsFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.AC_Aboutus_Back)
+    @OnClick(R.id.aboutus_back)
     public void onClick() {
-        Intent intent =new Intent(PublicVariable.SET_ACTION);
-        intent.putExtra("FragmentCode",PublicVariable.SET_MORESET);
-        getActivity().sendBroadcast(intent);
+        getActivity().getSupportFragmentManager().popBackStack();
     }
 }

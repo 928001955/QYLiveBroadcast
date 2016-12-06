@@ -5,14 +5,14 @@
     android:orientation="vertical">
 
     <DatePicker
-        android:id="@+id/DL_TimeSelect_Data"
+        android:id="@+id/timeSelect_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"/>
 
     <TimePicker
-        android:id="@+id/DL_TimeSelect_Time"
+        android:id="@+id/timeSelect_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

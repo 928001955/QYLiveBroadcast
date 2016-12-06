@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <SurfaceView
-        android:id="@+id/FM_loginWay_playAudio"
+        android:id="@+id/loginWay_playAudio"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -31,15 +31,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@android:color/holo_blue_light"
-                android:text="轻院在你眼中"
-                android:textSize="17sp" />
+                android:text="@string/slogan"
+                android:textSize="25sp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="选择登陆方式"
+            android:text="@string/login_mode"
             android:gravity="center"
             android:textColor="@android:color/holo_red_light"
             android:textSize="20sp" />
@@ -52,21 +52,21 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/FM_loginWay_wayQQ"
+                android:id="@+id/loginWay_wayQQ"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:src="@drawable/qqway" />
 
             <ImageView
-                android:id="@+id/FM_loginWay_wayWechat"
+                android:id="@+id/loginWay_wayWechat"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:src="@drawable/wechatway"/>
 
             <ImageView
-                android:id="@+id/FM_loginWay_wayQinghao"
+                android:id="@+id/loginWay_wayQinghao"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"

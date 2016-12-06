@@ -10,9 +10,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
-import com.edu.gdqy.Controller.MainView.My.AboutUsFragment;
-import com.edu.gdqy.Controller.MainView.My.MoreSetFragment;
-import com.edu.gdqy.Controller.MainView.My.ReviseDateFragment;
 import com.edu.gdqy.Controller.R;
 import com.edu.gdqy.Tool.PublicVariable;
 
@@ -24,6 +21,7 @@ import com.edu.gdqy.Tool.PublicVariable;
 public class MoreSetActivity extends AppCompatActivity {
 
     private Fragment setFragment;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,37 +31,17 @@ public class MoreSetActivity extends AppCompatActivity {
         if (supportActionBar != null) {
             supportActionBar.hide();
         }
-        //注册广播
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(PublicVariable.SET_ACTION);
-        registerReceiver(receiver, filter);
-
-        init();
+        token = getIntent().getStringExtra("secretKey");
+        addsetFragment();
     }
 
-    private void init() {
+    private void addsetFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("secretKey",token);
         setFragment = new MoreSetFragment();
-
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.AC_Moreset_FrameLayout, setFragment);
-        fragmentTransaction.commit();
+        setFragment.setArguments(bundle);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.moreSet_frame, setFragment);
+        ft.commit();
     }
-
-    private BroadcastReceiver receiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String fragmentCode = intent.getStringExtra("FragmentCode");
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
-            if (fragmentCode.equals(PublicVariable.SET_MORESET)) {
-                fragmentTransaction.replace(R.id.AC_Moreset_FrameLayout, setFragment).commit();
-            } else if (fragmentCode.equals(PublicVariable.SET_REVISEDATE)) {
-                Fragment reviseDateFragment= new ReviseDateFragment();
-                fragmentTransaction.replace(R.id.AC_Moreset_FrameLayout, reviseDateFragment).commit();
-            } else if (fragmentCode.equals(PublicVariable.SET_ABOUTUS)) {
-                Fragment usFragment = new AboutUsFragment();
-                fragmentTransaction.replace(R.id.AC_Moreset_FrameLayout, usFragment).commit();
-            }
-        }
-    };
 }

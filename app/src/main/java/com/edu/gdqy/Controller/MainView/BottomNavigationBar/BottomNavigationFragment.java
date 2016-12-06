@@ -23,13 +23,13 @@ import butterknife.OnClick;
 
 public class BottomNavigationFragment extends Fragment {
 
-    @BindView(R.id.FM_BottonNavigation_HomePage)
+    @BindView(R.id.bottonNavigation_homePage)
     ImageTextGroupView mHomePage;
-    @BindView(R.id.FM_BottonNavigation_Square)
+    @BindView(R.id.bottonNavigation_square)
     ImageTextGroupView mSquare;
-    @BindView(R.id.FM_BottonNavigation_Subscriber)
+    @BindView(R.id.bottonNavigation_subscriber)
     ImageTextGroupView mSubscriber;
-    @BindView(R.id.FM_BottonNavigation_My)
+    @BindView(R.id.bottonNavigation_mySelf)
     ImageTextGroupView mMy;
     private NavigationListener navigationListener;
     private String position = PublicVariable.HOMEPAGE_FRAGMENT;   //当前所在的位置
@@ -50,13 +50,13 @@ public class BottomNavigationFragment extends Fragment {
     }
 
     private void init() {
-        mHomePage.setImageIcon(R.drawable.press_home);
+        mHomePage.setImageIcon(R.drawable.pressed_home);
         mHomePage.setTextName("主页");
         mSquare.setImageIcon(R.drawable.square);
         mSquare.setTextName("广场");
         mSubscriber.setImageIcon(R.drawable.subscriber);
         mSubscriber.setTextName("订阅");
-        mMy.setImageIcon(R.drawable.my);
+        mMy.setImageIcon(R.drawable.myself);
         mMy.setTextName("我的");
     }
 
@@ -78,40 +78,40 @@ public class BottomNavigationFragment extends Fragment {
             mSquare.setImageIcon(R.drawable.square);
         else if (position.equals(PublicVariable.SUBSCRIBER_FRAGMENT))
             mSubscriber.setImageIcon(R.drawable.subscriber);
-        else mMy.setImageIcon(R.drawable.my);
+        else mMy.setImageIcon(R.drawable.myself);
     }
 
-    @OnClick({R.id.FM_BottonNavigation_HomePage, R.id.FM_BottonNavigation_Square, R.id.FM_BottonNavigation_Subscriber, R.id.FM_BottonNavigation_My})
+    @OnClick({R.id.bottonNavigation_homePage, R.id.bottonNavigation_square, R.id.bottonNavigation_subscriber, R.id.bottonNavigation_mySelf})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.FM_BottonNavigation_HomePage:
+            case R.id.bottonNavigation_homePage:
                 if (!isOnclickSameBtn(PublicVariable.HOMEPAGE_FRAGMENT)) {
                     navigationListener.changeMainView(PublicVariable.HOMEPAGE_FRAGMENT, position);
-                    mHomePage.setImageIcon(R.drawable.press_home);
+                    mHomePage.setImageIcon(R.drawable.pressed_home);
                     changePositionIcon();
                     position = PublicVariable.HOMEPAGE_FRAGMENT;
                 }
                 break;
-            case R.id.FM_BottonNavigation_Square:
+            case R.id.bottonNavigation_square:
                 if (!isOnclickSameBtn(PublicVariable.SQUARE_FRAGMENT)) {
                     navigationListener.changeMainView(PublicVariable.SQUARE_FRAGMENT, position);
-                    mSquare.setImageIcon(R.drawable.press_square);
+                    mSquare.setImageIcon(R.drawable.pressed_square);
                     changePositionIcon();
                     position = PublicVariable.SQUARE_FRAGMENT;
                 }
                 break;
-            case R.id.FM_BottonNavigation_Subscriber:
+            case R.id.bottonNavigation_subscriber:
                 if (!isOnclickSameBtn(PublicVariable.SUBSCRIBER_FRAGMENT)) {
                     navigationListener.changeMainView(PublicVariable.SUBSCRIBER_FRAGMENT, position);
-                    mSubscriber.setImageIcon(R.drawable.press_subscriber);
+                    mSubscriber.setImageIcon(R.drawable.pressed_subscriber);
                     changePositionIcon();
                     position = PublicVariable.SUBSCRIBER_FRAGMENT;
                 }
                 break;
-            case R.id.FM_BottonNavigation_My:
+            case R.id.bottonNavigation_mySelf:
                 if (!isOnclickSameBtn(PublicVariable.MY_FRAGMENT)) {
                     navigationListener.changeMainView(PublicVariable.MY_FRAGMENT, position);
-                    mMy.setImageIcon(R.drawable.press_my);
+                    mMy.setImageIcon(R.drawable.pressed_my);
                     changePositionIcon();
                     position = PublicVariable.MY_FRAGMENT;
                 }

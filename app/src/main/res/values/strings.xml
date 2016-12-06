@@ -1,3 +1,101 @@
 <resources>
     <string name="app_name">轻院TV</string>
+    <color name="mohu">#55000000</color>
+
+    <string name="upload">上传</string>
+    <string name="select">选择</string>
+    <string name="cut">裁剪</string>
+    <string name="historical_records">历史纪录</string>
+    <string name="release_notice">发布预告</string>
+    <string name="start_time">开始时间:</string>
+    <string name="topic">直播话题:</string>
+    <string name="search">搜索</string>
+    <string name="input_key">输入关键字</string>
+    <string name="vedio_name">视频名</string>
+    <string name="confirm_upload">确认上传</string>
+    <string name="wait">请等待</string>
+    <string name="about_live">关于直播</string>
+    <string name="about_live_content">&#160;&#160;&#160;&#160;&#160;&#160;轻院TV以课程直播为主，涵盖了课后辅导、专题讲座、娱乐等多种直播内容。每天，都有成千上万的观众与主播在轻院TV分享欢笑，获得属于自己独一份的知识和快乐。\n
+        &#160;&#160;&#160;&#160;&#160;轻院TV欢迎每一名用户：无论是主播还是观众，我们都力图为您提供最好的直播与观看环境；并希望与您携手，共同进步，绘制更加美好的未来。\n
+        &#160;&#160;&#160;&#160;&#160;欢乐直播，尽在轻院TV！</string>
+    <string name="team_name">软件二组</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="hot">热门</string>
+    <string name="login">登录</string>
+    <string name="remember_password">记住密码</string>
+    <string name="automatic_logon">自动登录</string>
+    <string name="registered_account">注册账号</string>
+    <string name="login_immediately">立即登录</string>
+    <string name="slogan">轻院在你眼中</string>
+    <string name="login_mode">登录方式</string>
+    <string name="input_mail">请输入邮箱</string>
+    <string name="identifying_code">验证码</string>
+    <string name="input_code">请输入验证码</string>
+    <string name="input_password">请输入密码</string>
+    <string name="input_nickname">请输入您的昵称</string>
+    <string name="register_immediately">立即注册</string>
+    <string name="more_settings">更多设置</string>
+    <string name="login_register">登录|注册</string>
+    <string name="i_want_to_live">我要直播</string>
+    <string name="my_friend">我的朋友</string>
+    <string name="input_phone">请输入手机号</string>
+    <string name="register">注册</string>
+    <string name="modify_data">修改资料</string>
+    <string name="account">账号:</string>
+    <string name="password">密码:</string>
+    <string name="nickname">昵称:</string>
+    <string name="modify_completed">修改完成</string>
+    <string name="modify_password">修改密码</string>
+    <string name="wonderful_trailer">精彩预告</string>
+    <string name="programme">编程</string>
+    <string name="delete">删除</string>
+    <string name="stick">置顶</string>
+    <string name="category">类型:</string>
+    <string name="issue_topic">发布话题</string>
+    <string name="subscribe">订阅</string>
+
+    <array name="live_category">
+        <item>课程教学</item>
+        <item>课后辅导</item>
+        <item>专题讲座</item>
+        <item>学生交流</item>
+    </array>
+    
+    <array name="live_category1">
+        <item>编程</item>
+        <item>电商</item>
+        <item>经济</item>
+        <item>医药</item>
+        <item>艺术</item>
+        <item>外语</item>
+        <item>环境</item>
+        <item>心理</item>
+    </array>
+
+    <array name="live_category2">
+        <item>问答</item>
+        <item>巩固</item>
+        <item>回顾</item>
+        <item>扩展</item>
+    </array>
+
+    <array name="live_category3">
+        <item>毕业</item>
+        <item>励志</item>
+        <item>科技</item>
+        <item>生活</item>
+        <item>创业</item>
+        <item>情感</item>
+    </array>
+
+    <array name="live_category4">
+        <item>电子</item>
+        <item>梦想</item>
+        <item>技能</item>
+        <item>运动</item>
+        <item>才艺</item>
+        <item>休闲</item>
+        <item>游戏</item>
+        <item>潮流</item>
+    </array>
 </resources>

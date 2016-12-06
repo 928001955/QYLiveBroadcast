@@ -25,8 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="发布预告"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:text="@string/release_notice"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,14 +37,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="开始时间:" />
+                    android:text="@string/start_time" />
 
                 <EditText
-                    android:id="@+id/AC_Releasenotice_StartTime"
+                    android:id="@+id/releasenotice_startTime"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:paddingLeft="2dp"
-                    android:background="@drawable/shape_edittext" />
+                    android:background="@drawable/shape_edittext"
+                    android:paddingLeft="2dp" />
 
             </LinearLayout>
 
@@ -57,27 +57,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="直播主题:" />
+                    android:text="@string/topic" />
 
                 <EditText
-                    android:id="@+id/AC_Releasenotice_Subject"
+                    android:id="@+id/releasenotice_subject"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:paddingLeft="2dp"
-                    android:background="@drawable/shape_edittext" />
+                    android:background="@drawable/shape_edittext"
+                    android:paddingLeft="2dp" />
 
             </LinearLayout>
 
             <Button
-                android:id="@+id/AC_Releasenotice_Submit"
+                android:id="@+id/releasenotice_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/shape_button_usable"
+                android:background="@drawable/shape_button_blue"
                 android:paddingLeft="50dp"
                 android:paddingRight="50dp"
-                android:text="发 布 预 告" />
+                android:text="@string/release_notice" />
 
         </LinearLayout>
 

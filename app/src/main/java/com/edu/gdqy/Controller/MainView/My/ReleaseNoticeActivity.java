@@ -22,9 +22,9 @@ import butterknife.OnTouch;
 
 public class ReleaseNoticeActivity extends AppCompatActivity
         implements TimeSelectDialog.StartTimeListener{
-    @BindView(R.id.AC_Releasenotice_StartTime)
+    @BindView(R.id.releasenotice_startTime)
     EditText mStartTime;
-    @BindView(R.id.AC_Releasenotice_Subject)
+    @BindView(R.id.releasenotice_subject)
     EditText mSubject;
 
     @Override
@@ -35,7 +35,7 @@ public class ReleaseNoticeActivity extends AppCompatActivity
         ButterKnife.bind(this);
     }
 
-    @OnTouch(R.id.AC_Releasenotice_StartTime)
+    @OnTouch(R.id.releasenotice_startTime)
     public boolean onTouch(View view, MotionEvent event) {
         if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
             TimeSelectDialog timeSelectDialog = new TimeSelectDialog();
@@ -44,7 +44,7 @@ public class ReleaseNoticeActivity extends AppCompatActivity
         return true;
     }
 
-    @OnClick(R.id.AC_Releasenotice_Submit)
+    @OnClick(R.id.releasenotice_submit)
     public void onClick() {
         finish();
     }

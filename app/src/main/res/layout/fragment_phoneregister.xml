@@ -2,55 +2,68 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
     android:gravity="center"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="3dp">
 
         <EditText
-            android:id="@+id/FM_Phoneregister_PhoneInput"
+            android:id="@+id/phoneregister_phoneInput"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/shape_edittext"
             android:drawablePadding="10dp"
-            android:hint="请输入您的手机" />
+            android:inputType="number"
+            android:hint="@string/input_phone" />
 
         <Button
-            android:id="@+id/FM_Phoneregister_Captcha"
+            android:id="@+id/phoneregister_captcha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-90dp"
-            android:background="@drawable/shape_button_usable"
-            android:text="验证码" />
+            android:background="@drawable/shape_button_blue"
+            android:text="@string/identifying_code" />
     </LinearLayout>
 
     <EditText
-        android:id="@+id/FM_honeregister_codeInput"
+        android:id="@+id/phoneregister_codeInput"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/shape_edittext"
         android:drawablePadding="10dp"
-        android:hint="请输入验证码" />
+        android:layout_margin="3dp"
+        android:hint="@string/input_code" />
 
     <EditText
-        android:id="@+id/FM_honeregister_passwordInput"
+        android:id="@+id/phoneregister_passwordInput"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/shape_edittext"
         android:drawablePadding="10dp"
-        android:hint="请输入您的密码"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:layout_margin="3dp"
+        android:hint="@string/input_password"/>
 
     <EditText
-        android:id="@+id/FM_honeregister_Nickname"
+        android:id="@+id/phoneregister_nickname"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/shape_edittext"
         android:drawablePadding="10dp"
-        android:hint="请输入您的昵称" />
+        android:layout_margin="3dp"
+        android:hint="@string/input_nickname" />
+
+    <Button
+        android:id="@+id/phoneRegister_registerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:background="@drawable/shape_button_blue"
+        android:text="@string/register_immediately"
+        android:textSize="20sp" />
 
 </LinearLayout>

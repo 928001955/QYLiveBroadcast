@@ -5,11 +5,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:background="@android:color/holo_blue_light">
+
+        <ImageView
+            android:id="@+id/search_Back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:text="@string/search"/>
+    </RelativeLayout>
+
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="5dp"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
@@ -18,22 +41,21 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/AC_Search_Text"
+                android:id="@+id/search_InputKey"
                 style="?android:attr/textViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:hint="输入搜索的关键字" />
+                android:hint="@string/input_key" />
 
             <ImageView
-                android:id="@+id/AC_Search_Searchbtn"
+                android:id="@+id/search_SearchBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-50dp"
                 android:background="@drawable/selector_groupview"
                 android:padding="10dp"
                 android:src="@drawable/search" />
-
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
@@ -41,13 +63,19 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="5dp"
-        android:layout_weight="9"
+        android:layout_weight="7"
         app:cardCornerRadius="10dp">
 
         <GridView
+            android:id="@+id/search_Result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@android:id/empty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#123135"/>
+            android:src="@drawable/without_data" />
 
     </android.support.v7.widget.CardView>
 

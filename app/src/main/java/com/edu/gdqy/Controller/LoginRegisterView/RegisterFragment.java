@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.edu.gdqy.Controller.R;
 
@@ -44,9 +43,7 @@ public class RegisterFragment extends Fragment {
 
     @OnClick(R.id.register_back)
     public void onClick() {
-        LoginFragment loginFragment = new LoginFragment();
-        getActivity().getSupportFragmentManager().beginTransaction().replace(
-                R.id.AC_Loginregister_Framelayout,loginFragment).commit();
+        getActivity().getSupportFragmentManager().popBackStack();
     }
 
 

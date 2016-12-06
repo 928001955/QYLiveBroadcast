@@ -9,22 +9,18 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@android:color/holo_blue_light">
-
-        <TextView
-            android:id="@+id/FM_login_back"
+        <ImageView
+            android:id="@+id/login_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="&lt;"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
+            android:src="@drawable/back"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="登 录"
+            android:text="@string/login"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
     </RelativeLayout>
@@ -38,7 +34,7 @@
 
 
         <EditText
-            android:id="@+id/FM_login_userInput"
+            android:id="@+id/login_userInput"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:drawablePadding="10dp"
@@ -47,7 +43,7 @@
 
 
         <EditText
-            android:id="@+id/FM_login_passwordInput"
+            android:id="@+id/login_passwordInput"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:drawablePadding="10dp"
@@ -60,12 +56,32 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
 
+            <CheckBox
+                android:id="@+id/login_Remember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/remember_password"/>
+
+            <CheckBox
+                android:id="@+id/login_Automatic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/automatic_logon"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
             <TextView
                 android:id="@+id/login_forgetPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_groupview"
-                android:text="忘记密码"
+                android:text="@string/forget_password"
                 android:textSize="20sp" />
 
             <TextView
@@ -73,17 +89,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="注册账号"
+                android:background="@drawable/selector_groupview"
+                android:text="@string/registered_account"
                 android:textSize="20sp" />
         </RelativeLayout>
 
         <Button
-            android:id="@+id/login_ImmediatelyLogin"
+            android:id="@+id/login_immediatelyLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
-            android:background="@drawable/shape_button_usable"
+            android:background="@drawable/shape_button_blue"
             android:textSize="20sp"
-            android:text="立即登录" />
+            android:text="@string/login_immediately" />
     </LinearLayout>
 </LinearLayout>

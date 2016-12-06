@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/AC_Moreset_FrameLayout"
+        android:id="@+id/moreSet_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     
